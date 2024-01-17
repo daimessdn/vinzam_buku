@@ -1,23 +1,71 @@
 <section class="flex flex-col w-60 side__dashboard">
-    <ul class="list-none flex flex-col">
-        <li class="px-3 py-2">
-            <a class="font-bold text-md hover:text-blue-500" href="dashboard.php">Dashboard</a>
+    <ul class="list-none flex flex-col gap-4">
+        <li>
+            <a class="font-bold text-base
+                transition-all duration-300
+                block
+                bg-violet-200 hover:bg-violet-400
+                px-3 py-2
+                rounded-md
+                text-violet-600
+                hover:text-violet-800" href="dashboard.php">
+                Dashboard
+            </a>
         </li>
 
-        <li class="px-3 py-2">
-            <a class="font-bold text-md hover:text-blue-500" href="books.php">Books</a>
+        <li>
+            <a class="
+                font-bold text-base
+                transition-all duration-300
+                block
+                bg-violet-200 hover:bg-violet-400
+                px-3 py-2
+                rounded-md
+                text-violet-600
+                hover:text-violet-800" href="books.php">
+                Books</a>
         </li>
 
-        <li class="px-3 py-2">
-            <a class="font-bold text-md hover:text-blue-500" href="member.php">Member</a>
+        <li>
+            <a class="
+                font-bold text-base
+                transition-all duration-300
+                block
+                bg-violet-200 hover:bg-violet-400
+                px-3 py-2
+                rounded-md
+                text-violet-600
+                hover:text-violet-800" href="member.php">
+                Member
+            </a>
         </li>
 
-        <li class="px-3 py-2">
-            <a class="font-bold text-md hover:text-blue-500" href="borrowing.php">Borrowing</a>
+        <li>
+            <a class="
+                font-bold text-base
+                transition-all duration-300
+                block
+                bg-violet-200 hover:bg-violet-400
+                px-3 py-2
+                rounded-md
+                text-violet-600
+                hover:text-violet-800" href="borrowing.php">
+                Borrowing
+            </a>
         </li>
 
-        <li class="px-3 py-2">
-            <a class="font-bold text-md hover:text-blue-500" href="logout.php">Logout</a>
+        <li>
+            <a class="
+                font-bold text-base
+                transition-all duration-300
+                block
+                bg-violet-200 hover:bg-violet-400
+                px-3 py-2
+                rounded-md
+                text-violet-600
+                hover:text-violet-800" href="logout.php">
+                Logout
+            </a>
         </li>
     </ul>
 </section>
