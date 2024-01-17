@@ -1,11 +1,11 @@
 <section class="flex flex-col w-60 side__dashboard">
-    <ul class="list-none flex flex-col gap-4">
+    <ul class="list-none flex flex-col gap-3">
         <li>
             <a class="font-bold text-base
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
-                px-3 py-2
+                p-3
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="dashboard.php">
@@ -19,7 +19,7 @@
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
-                px-3 py-2
+                p-3
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="books.php">
@@ -32,7 +32,7 @@
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
-                px-3 py-2
+                p-3
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="member.php">
@@ -46,7 +46,7 @@
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
-                px-3 py-2
+                p-3
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="borrowing.php">
@@ -60,7 +60,7 @@
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
-                px-3 py-2
+                p-3
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="logout.php">

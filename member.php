@@ -1,6 +1,7 @@
 <?php require_once "config.php"; ?>
 
 <?php require_once "includes/header.php"; ?>
+<?php require_once "dashboard_style.php"; ?>
 
 <?php require_once "utils/validation.php"; ?>
 
@@ -9,7 +10,7 @@
         <?php require_once "includes/components/sidebar.php"; ?>
 
 
-        <section class="main__dashboard w-full">
+        <section class="main__right-side p-4 bg-violet-100 rounded-md shadow-md w-full">
             <h1 class="text-xl font-bold mb-3">Books</h1>
 
             <h1>Hello,

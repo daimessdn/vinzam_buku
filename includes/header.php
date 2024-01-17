@@ -29,10 +29,10 @@
     </style>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
         body {
-            font-family: "Poppins", sans-serif;
+            font-family: "DM Sans", sans-serif;
         }
 
         table {
@@ -40,11 +40,20 @@
             border-radius: .5rem;
         }
 
+        thead tr {
+            background-color: #DDD6FE;
+            color: #8B5CF6;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        tbody tr {
+            background: #fff;
+        }
+
         tr td,
         tr th {
-            padding: .25rem;
+            padding: .5rem;
 
-            border: 1px solid #222;
             text-align: left;
         }
     </style>
@@ -59,14 +68,6 @@
             </div>
 
             <ul class="list-none p-0 m-0 flex gap-4 flex-row">
-                <li class="nav-item">
-                    <a href="#" class="block nav-link px-3 py-[1.5rem]">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="block nav-link px-3 py-[1.5rem]">Books Collection</a>
-                </li>
-
                 <li class="nav-item">
                     <?php if (!isset($_SESSION["email"])) : ?>
                         <a href="login.php" class="block nav-link px-3 py-[1.5rem] bg-night text-white">Login</a>
