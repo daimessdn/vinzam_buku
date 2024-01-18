@@ -1,7 +1,7 @@
 <section class="flex flex-col w-60 side__dashboard">
     <ul class="list-none flex flex-col gap-3">
         <li>
-            <a class="font-bold text-base
+            <a class="font-bold
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
@@ -15,7 +15,7 @@
 
         <li>
             <a class="
-                font-bold text-base
+                font-bold
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
@@ -28,7 +28,7 @@
 
         <li>
             <a class="
-                font-bold text-base
+                font-bold
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
@@ -42,7 +42,7 @@
 
         <li>
             <a class="
-                font-bold text-base
+                font-bold
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
@@ -56,7 +56,7 @@
 
         <li>
             <a class="
-                font-bold text-base
+                font-bold
                 transition-all duration-300
                 block
                 bg-violet-200 hover:bg-violet-400
