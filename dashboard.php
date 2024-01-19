@@ -31,7 +31,7 @@
             </div>
 
             <h1>Hello,
-                <?php echo $_SESSION["email"]; ?>
+                <?= $_SESSION["email"]; ?>
             </h1>
         </section>
     </div>

@@ -17,7 +17,7 @@
                         id="add-book"
                         class="bg-violet-600
                         hover:bg-violet-800
-                        text-white py-2 px-3 rounded">
+                        text-white py-2 px-3 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
@@ -69,18 +69,24 @@
                             ?>
                             <tr>
                                 <td>
-                                    <a href=<?php echo "books.detail.php?id=" . $book["id"]; ?>>
-                                        <?php echo $book["judul"]; ?>
+                                    <a href=<?= "books.detail.php?id=" . $book["id"]; ?>>
+                                        <?= $book["judul"]; ?>
                                     </a>
                                 </td>
 
-                                <td><?php echo $kategori_result["kategori"]; ?></td>
-                                <td><?php echo $book["tahun_terbit"]; ?></td>
-                                <td><?php echo $book["penerbit"]; ?></td>
+                                <td><?= $kategori_result["kategori"]; ?></td>
+                                <td><?= $book["tahun_terbit"]; ?></td>
+                                <td><?= $book["penerbit"]; ?></td>
                                 <td class="select-none">
                                     <button class="bg-violet-600
                                         hover:bg-violet-800
-                                        text-white font-bold py-2 px-3 rounded" onclick="alert('edit');">
+                                        text-white font-bold py-2 px-3 rounded"
+                                        id="<?= "update-" . $book['id']; ?>"
+                                        onclick='updateBook(
+                                            <?= $book['id']; ?>,
+                                            <?= json_encode($book, JSON_HEX_APOS); ?>
+                                        )'
+                                    >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                         </svg>
@@ -91,7 +97,7 @@
                                             hover:bg-violet-800
                                             text-white font-bold py-2 px-3 rounded"
                                         id="<?= "delete-" . $book['id']; ?>"
-                                        onclick="deleteBook(<?php echo $book['id']; ?>)"
+                                        onclick="deleteBook(<?= $book['id']; ?>)"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -110,7 +116,7 @@
                         <?php if ($page > 1) : ?>
                             <li>
                                 <a href="
-                                    <?php echo "books.php?page=" . ($page - 1); ?>
+                                    <?= "books.php?page=" . ($page - 1); ?>
                                 " class="bg-violet-600
                                             hover:bg-violet-800
                                             text-white font-bold py-2 px-3 rounded">Prev</a>
@@ -125,10 +131,10 @@
                                 for ($i = 1; $i <= $page_amount; $i++) :
                                 ?>
                                     <li>
-                                        <a href="<?php echo "books.php?page=" . $i; ?>" class="bg-violet-600
+                                        <a href="<?= "books.php?page=" . $i; ?>" class="bg-violet-600
                                                 hover:bg-violet-800
                                                 text-white font-bold py-2 px-3">
-                                            <?php echo $i; ?>
+                                            <?= $i; ?>
                                         </a>
                                     </li>
                                 <?php endfor; ?>
@@ -139,7 +145,7 @@
                         <?php if ($page < $page_amount) : ?>
                             <li>
                                 <a href="
-                                    <?php echo "books.php?page=" . ($page <= 1 ? 2 : $page + 1); ?>
+                                    <?= "books.php?page=" . ($page <= 1 ? 2 : $page + 1); ?>
                                 " class="bg-violet-600
                                             hover:bg-violet-800
                                             text-white font-bold py-2 px-3 rounded">Next</a>
@@ -209,7 +215,7 @@
 
             <div class="flex flex-col mb-4">
                 <label for="year" class="mb-2">Tahun Terbit</label>
-                <input type="nnmber" name="year" max=<?php echo date("Y"); ?> class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                <input type="nnmber" name="year" max=<?= date("Y"); ?> class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
                     id="year" required="required" placeholder="Input published year">
             </div>
 
@@ -224,6 +230,65 @@
                     hover:bg-violet-800
                     text-white font-bold py-2 px-3 rounded"
                     type="submit" name="add_book">
+                    Simpan
+                </button>
+    
+                <button class="bg-violet-100
+                    hover:bg-violet-300
+                    border-[1px] border-violet-600
+                    text-violet-600 hover:text-violet-800
+                    font-bold py-2 px-3 rounded
+                    popup-abort">
+                    Batal
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section id="popup-update" class="popup">
+    <div class="popup-content p-4">
+        <div class="text-xl font-bold mb-2 block">Edit Buku</div>
+        
+        <form action="books.update.php" method="POST" class="block">
+            <div class="flex flex-col mb-4">
+                <label for="title" class="mb-2">Judul</label>
+                <input type="text" name="title" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="title" required="required" placeholder="Input title">
+            </div>
+            
+            <div class="flex flex-col mb-4">
+                <label for="category" class="mb-2">Kategori</label>
+                <select name="category" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem] bg-white"
+                    id="category" required="required" placeholder="Input category">
+                    <?php
+                        $categories = $conn->prepare("SELECT * from kategori;");
+                        $categories->execute();
+
+                        foreach ($categories->fetchAll(PDO::FETCH_ASSOC) as $category) :
+                    ?>
+                    <option value="<?= $category['id']?>"><?= $category["kategori"] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="year" class="mb-2">Tahun Terbit</label>
+                <input type="nnmber" name="year" max=<?= date("Y"); ?> class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="year" required="required" placeholder="Input published year">
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="publisher" class="mb-2">Penerbit</label>
+                <input type="text" name="publisher" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="publisher" required="required" placeholder="Input publisher">
+            </div>
+
+            <div class="flex flex-row gap-2 justify-end mt-4">
+                <button class="bg-violet-600
+                    hover:bg-violet-800
+                    text-white font-bold py-2 px-3 rounded"
+                    type="submit" name="update_book">
                     Simpan
                 </button>
     

@@ -28,16 +28,16 @@
 
                 ?>
 
-                <h1 class="font-bold text-2xl"><?php echo $result["judul"]; ?></h1>
+                <h1 class="font-bold text-2xl"><?= $result["judul"]; ?></h1>
 
                 <h2 class="font-bold text-xl mt-4">Kategori</h2>
-                <p><?php echo $category_result; ?></p>
+                <p><?= $category_result; ?></p>
 
                 <h2 class="font-bold text-xl mt-4">Penerbit</h2>
-                <p><?php echo $result["penerbit"]; ?></p>
+                <p><?= $result["penerbit"]; ?></p>
 
                 <h2 class="font-bold text-xl mt-4">Tahun Terbit</h2>
-                <p><?php echo $result["tahun_terbit"]; ?></p>
+                <p><?= $result["tahun_terbit"]; ?></p>
             <?php endif; ?>
         </section>
     </div>
