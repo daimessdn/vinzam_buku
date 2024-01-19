@@ -12,15 +12,17 @@
         <section class="main__right-side p-4 bg-violet-100 rounded-md shadow-md w-full">
             <h1 class="text-2xl font-bold mb-4">Books</h1>
 
-            <form action="books.php" method="POST">
-                <button name="tambah_buku" class="bg-violet-600
+            <!-- <form action="books.php" method="POST"> -->
+                <button name="tambah_buku"
+                        id="add-book"
+                        class="bg-violet-600
                         hover:bg-violet-800
-                        text-white py-2 px-3 rounded" type="submit">
+                        text-white py-2 px-3 rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                 </button>
-            </form>
+            <!-- </form> -->
 
             <form class="flex flex-row gap-2 items-center mt-4">
                 <input class="border-violet-600 border-[1px] py-2 px-3 rounded" type="search" name="search" placeholder="Type to search" />
@@ -28,15 +30,6 @@
                         hover:bg-violet-800
                         text-white py-2 px-3 rounded" type="submit">Cari Buku</button>
             </form>
-
-            <?php
-            if (isset($_POST["tambah_buku"])) {
-                echo "tambah buku";
-                // $books_collection_insert = $conn->prepare("INSERT INTO buku (judul, cover, kategori_id, tahun_terbit, penerbit) VALUES (\"Dilan (1990)\", NULL, 3, 2014, \"Pastel Books\");");
-                $books_collection_insert = $conn->prepare("INSERT INTO buku (judul, cover, kategori_id, tahun_terbit, penerbit) VALUES (\"Dilan (1991)\", NULL, 3, 2015, \"Pastel Books\");");
-                $books_collection_insert->execute();
-            }
-            ?>
 
             <?php
             if (isset($_GET["page"])) {
@@ -75,7 +68,12 @@
                             $kategori_result = $kategori->fetch(PDO::FETCH_ASSOC);
                             ?>
                             <tr>
-                                <td><?php echo $book["judul"]; ?></td>
+                                <td>
+                                    <a href=<?php echo "books.detail.php?id=" . $book["id"]; ?>>
+                                        <?php echo $book["judul"]; ?>
+                                    </a>
+                                </td>
+
                                 <td><?php echo $kategori_result["kategori"]; ?></td>
                                 <td><?php echo $book["tahun_terbit"]; ?></td>
                                 <td><?php echo $book["penerbit"]; ?></td>
@@ -88,9 +86,13 @@
                                         </svg>
                                     </button>
 
-                                    <button class="bg-violet-600
-                                        hover:bg-violet-800
-                                        text-white font-bold py-2 px-3 rounded" id=<?php echo 'delete-popup-' . $book['id']; ?>>
+                                    <button
+                                        class="bg-violet-600
+                                            hover:bg-violet-800
+                                            text-white font-bold py-2 px-3 rounded"
+                                        id="<?= "delete-" . $book['id']; ?>"
+                                        onclick="deleteBook(<?php echo $book['id']; ?>)"
+                                    >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                                         </svg>
@@ -119,7 +121,7 @@
                         <li>
                             <ul class="rounded flex flex-row list-none items-strect">
                                 <?php
-                                $page_amount = $books_all->rowCount() % 5 == 0 ? intdiv($books_all->rowCount(), 5) + 1 : ceil($books_all->rowCount() / 5);
+                                $page_amount = $books_all->rowCount() % 5 == 0 ? intdiv($books_all->rowCount(), 5) : ceil($books_all->rowCount() / 5);
                                 for ($i = 1; $i <= $page_amount; $i++) :
                                 ?>
                                     <li>
@@ -152,7 +154,7 @@
     </div>
 </main>
 
-<section id="popup-1" class="popup">
+<section id="popup-delete" class="popup">
     <div class="popup-content p-4">
         <div class="text-xl font-bold mb-2 block">Hapus Buku</div>
         <div class="block">Apakah Anda yakin ingin menghapus buku?</div>
@@ -160,7 +162,10 @@
         <div class="flex flex-row gap-2 justify-end mt-4">
             <button class="bg-violet-600
                 hover:bg-violet-800
-                text-white font-bold py-2 px-3 rounded">
+                text-white font-bold py-2 px-3 rounded
+                
+                button-delete-confirm"
+            >
                 Ya
             </button>
 
@@ -177,7 +182,65 @@
     </div>
 </section>
 
+<section id="popup-add-book" class="popup">
+    <div class="popup-content p-4">
+        <div class="text-xl font-bold mb-2 block">Tambah Buku</div>
+        <form action="books.add.php" method="POST" class="block">
+            <div class="flex flex-col mb-4">
+                <label for="title" class="mb-2">Judul</label>
+                <input type="text" name="title" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="title" required="required" placeholder="Input title">
+            </div>
+            
+            <div class="flex flex-col mb-4">
+                <label for="category" class="mb-2">Kategori</label>
+                <select name="category" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem] bg-white"
+                    id="category" required="required" placeholder="Input category">
+                    <?php
+                        $categories = $conn->prepare("SELECT * from kategori;");
+                        $categories->execute();
+
+                        foreach ($categories->fetchAll(PDO::FETCH_ASSOC) as $category) :
+                    ?>
+                    <option value="<?= $category['id']?>"><?= $category["kategori"] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="year" class="mb-2">Tahun Terbit</label>
+                <input type="nnmber" name="year" max=<?php echo date("Y"); ?> class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="year" required="required" placeholder="Input published year">
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="publisher" class="mb-2">Penerbit</label>
+                <input type="text" name="publisher" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]"
+                    id="publisher" required="required" placeholder="Input publisher">
+            </div>
+
+            <div class="flex flex-row gap-2 justify-end mt-4">
+                <button class="bg-violet-600
+                    hover:bg-violet-800
+                    text-white font-bold py-2 px-3 rounded"
+                    type="submit" name="add_book">
+                    Simpan
+                </button>
+    
+                <button class="bg-violet-100
+                    hover:bg-violet-300
+                    border-[1px] border-violet-600
+                    text-violet-600 hover:text-violet-800
+                    font-bold py-2 px-3 rounded
+                    popup-abort">
+                    Batal
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
 <script src="./src/js/popup.js"></script>
 <script>
-    togglePopup("#delete-popup-1", "#popup-1");
+    togglePopup("#add-book", "#popup-add-book");
 </script>
