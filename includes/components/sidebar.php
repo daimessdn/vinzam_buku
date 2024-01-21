@@ -1,4 +1,4 @@
-<section class="flex flex-col w-60 side__dashboard">
+<section class="flex flex-col w-1/4 side__dashboard">
     <ul class="list-none flex flex-col gap-3">
         <li>
             <a class="font-bold
@@ -35,7 +35,7 @@
                 p-3
                 rounded-md
                 text-violet-600
-                hover:text-violet-800" href="member.php">
+                hover:text-violet-800" href="members.php">
                 Member
             </a>
         </li>

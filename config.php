@@ -38,6 +38,10 @@ if ($conn == true) {
     $createBukuTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `buku` (`id` INT NULL AUTO_INCREMENT , `judul` VARCHAR(200) NOT NULL , `cover` MEDIUMBLOB NULL DEFAULT NULL , `kategori_id` INT NOT NULL , `tahun_terbit` YEAR NOT NULL , `penerbit` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`));");
     $createBukuTable->execute();
 
+    // buat table anggota
+    $createAnggotaTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `anggota` (`id` INT NOT NULL AUTO_INCREMENT , `nama` VARCHAR(100) NOT NULL , `nomor_anggota` VARCHAR(20) NOT NULL, PRIMARY KEY (`id`));");
+    $createAnggotaTable->execute();
+
     // echo "connection db success";
 } else {                        // if connection failed
     // echo "there is error";

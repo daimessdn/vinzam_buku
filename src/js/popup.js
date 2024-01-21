@@ -33,7 +33,7 @@ const deleteBook = (book_id) => {
 const updateBook = (book_id, book) => {
   const updateFormElement = document.querySelector(`#popup-update form`);
   updateFormElement.setAttribute("action", `books.update.php?id=${book_id}`);
-  
+
   console.log(book);
 
   updateFormElement.title.value = book.judul;
@@ -43,3 +43,5 @@ const updateBook = (book_id, book) => {
 
   togglePopup("#update-" + book_id, "#popup-update");
 };
+
+console.log("popup loaded");
