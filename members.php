@@ -39,7 +39,7 @@
             $members_all = $conn->prepare("SELECT * FROM anggota;");
             $members_all->execute();
 
-            $members = $conn->prepare("SELECT * FROM anggota LIMIT 5 OFFSET " . strval(($page - 1) * 5) . ";");
+            $members = $conn->prepare("SELECT * FROM anggota LIMIT 10 OFFSET " . strval(($page - 1) * 10) . ";");
             $members->execute();
 
             if ($members->rowCount() > 0) : ?>
@@ -106,7 +106,7 @@
                         <li>
                             <ul class="rounded flex flex-row list-none items-strect">
                                 <?php
-                                $page_amount = $members_all->rowCount() % 5 == 0 ? intdiv($members_all->rowCount(), 5) : ceil($members_all->rowCount() / 5);
+                                $page_amount = $members_all->rowCount() % 10 == 0 ? intdiv($members_all->rowCount(), 10) : ceil($members_all->rowCount() / 10);
                                 for ($i = 1; $i <= $page_amount; $i++) :
                                 ?>
                                     <li>
@@ -172,7 +172,7 @@
         <form action="members.add.php" method="POST" class="block">
             <div class="flex flex-col mb-4">
                 <label for="name" class="mb-2">Nama Anggota</label>
-                <input type="text" name="name" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]" id="name" required="required" placeholder="Input member name">
+                <input type="text" name="name" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="name" required="required" placeholder="Input member name">
             </div>
 
             <div class="flex flex-row gap-2 justify-end mt-4">
@@ -202,7 +202,7 @@
         <form action="members.update.php" method="POST" class="block">
             <div class="flex flex-col mb-4">
                 <label for="name" class="mb-2">Nama Anggota</label>
-                <input type="text" name="name" class="border-2 p-2 rounded-md shadow-lg border-gray-700 w-[28rem]" id="name" required="required" placeholder="Input name">
+                <input type="text" name="name" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="name" required="required" placeholder="Input name">
             </div>
 
             <div class="flex flex-row gap-2 justify-end mt-4">
