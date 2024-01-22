@@ -35,7 +35,7 @@ if ($conn == true) {
     }
 
     // buat tabel buku
-    $createBukuTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `buku` (`id` INT NULL AUTO_INCREMENT , `judul` VARCHAR(200) NOT NULL , `cover` MEDIUMBLOB NULL DEFAULT NULL , `kategori_id` INT NOT NULL , `tahun_terbit` YEAR NOT NULL , `penerbit` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`));");
+    $createBukuTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `buku` (`id` INT NULL AUTO_INCREMENT , `judul` VARCHAR(200) NOT NULL , `pengarang` VARCHAR(200) NOT NULL, `cover` MEDIUMBLOB NULL DEFAULT NULL , `kategori_id` INT NOT NULL , `tahun_terbit` YEAR NOT NULL , `penerbit` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`));");
     $createBukuTable->execute();
 
     // buat table anggota

@@ -22,7 +22,7 @@
                             <div class="flex flex-col items-center w-[25%]">
                                 <img alt="user" src="./src/img/user-white.svg" class="w-20 h-20 block" />
 
-                                <p class="text-center line-clamp-1 block mt-1 p-2 bg-violet-300 text-violet-700 rounded w-full"><?= $member["nama"]; ?></p>
+                                <p class="text-center line-clamp-1 block mt-1 px-2 py-1 bg-violet-300 text-violet-700 rounded w-full"><?= $member["nama"]; ?></p>
                             </div>
                         <?php endforeach; ?>
                     </div>

@@ -30,6 +30,9 @@
 
                 <h1 class="font-bold text-2xl"><?= $result["judul"]; ?></h1>
 
+                <h2 class="font-bold text-xl mt-4">Pengarang</h2>
+                <p><?= $result["pengarang"]; ?></p>
+
                 <h2 class="font-bold text-xl mt-4">Kategori</h2>
                 <p><?= $category_result; ?></p>
 

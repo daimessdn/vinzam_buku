@@ -13,10 +13,10 @@
             <h1 class="text-2xl font-bold mb-4">Borrow Books</h1>
 
             <form class="flex flex-row gap-2 items-center mt-4">
-                <input class="border-violet-600 border-[1px] py-2 px-3 rounded" type="search" name="search" placeholder="Type to search" />
+                <input class="border-violet-600 border-[1px] px-2 py-1 rounded" type="search" name="search" placeholder="Type to search" />
                 <button name="search_buku" class="bg-violet-600
                         hover:bg-violet-800
-                        text-white py-2 px-3 rounded" type="submit">Cari Peminjaman</button>
+                        text-white px-2 py-1 rounded" type="submit">Cari Peminjaman</button>
             </form>
 
             <?php
@@ -67,7 +67,7 @@
                                 <td class="select-none">
                                     <button class="bg-violet-600
                                             hover:bg-violet-800
-                                            text-white font-bold py-2 px-3 rounded" id="<?= "update-" . $borrowing['id']; ?>">
+                                            text-white font-bold px-2 py-1 rounded" id="<?= "update-" . $borrowing['id']; ?>">
                                         Proses Pengembalian
                                     </button>
                                 </td>
@@ -86,7 +86,7 @@
                                     <?= "borrowings.php?page=" . ($page - 1); ?>
                                 " class="bg-violet-600
                                             hover:bg-violet-800
-                                            text-white font-bold py-2 px-3 rounded">Prev</a>
+                                            text-white font-bold px-2 py-1 rounded">Prev</a>
                             </li>
                         <?php endif; ?>
                         <!--end prev pagination -->
@@ -100,7 +100,7 @@
                                     <li>
                                         <a href="<?= "borrowings.php?page=" . $i; ?>" class="bg-violet-600
                                                 hover:bg-violet-800
-                                                text-white font-bold py-2 px-3">
+                                                text-white font-bold px-2 py-1">
                                             <?= $i; ?>
                                         </a>
                                     </li>
@@ -115,7 +115,7 @@
                                     <?= "borrowings.php?page=" . ($page <= 1 ? 2 : $page + 1); ?>
                                 " class="bg-violet-600
                                             hover:bg-violet-800
-                                            text-white font-bold py-2 px-3 rounded">Next</a>
+                                            text-white font-bold px-2 py-1 rounded">Next</a>
                             </li>
                         <?php endif; ?>
                         <!-- enc next pagination -->
@@ -129,27 +129,27 @@
                 <form action="borrowings.add.php" method="POST" class="block" autocomplete="off">
                     <div class="flex flex-col mb-4">
                         <label for="name" class="mb-2">Nama Anggota</label>
-                        <input list="members" oninput="updateMemberList(this.value)" type="text" name="name" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="name" required="required" placeholder="Input name">
+                        <input list="members" oninput="updateMemberList(this.value)" type="text" name="name" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="name" required="required" placeholder="Input name">
 
                         <datalist id="members"></datalist>
                     </div>
 
                     <div class="flex flex-col mb-4">
                         <label for="title" class="mb-2">Judul</label>
-                        <input list="borrowings" oninput="updateBookList(this.value)" type="text" name="title" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
+                        <input list="borrowings" oninput="updateBookList(this.value)" type="text" name="title" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
 
                         <datalist id="borrowings"></datalist>
                     </div>
 
                     <div class="flex flex-col mb-4">
                         <label for="return_date" class="mb-2">Tanggal Pengembalian</label>
-                        <input type="date" name="return_date" min=<?= date("Y-m-d"); ?> class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input returning date">
+                        <input type="date" name="return_date" min=<?= date("Y-m-d"); ?> class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input returning date">
                     </div>
 
                     <div class="flex flex-row gap-2 justify-end mt-4">
                         <button class="bg-violet-600
                             hover:bg-violet-800
-                            text-white font-bold py-2 px-3 rounded" type="submit" name="borrow_book">
+                            text-white font-bold px-2 py-1 rounded" type="submit" name="borrow_book">
                             Proses Peminjaman
                         </button>
 
@@ -157,7 +157,7 @@
                             hover:bg-violet-300
                             border-[1px] border-violet-600
                             text-violet-600 hover:text-violet-800
-                            font-bold py-2 px-3 rounded" type="reset">
+                            font-bold px-2 py-1 rounded" type="reset">
                             Ulangi
                         </button>
                     </div>
@@ -175,7 +175,7 @@
         <div class="flex flex-row gap-2 justify-end mt-4">
             <button class="bg-violet-600
                 hover:bg-violet-800
-                text-white font-bold py-2 px-3 rounded
+                text-white font-bold px-2 py-1 rounded
                 
                 button-delete-confirm">
                 Ya
@@ -185,7 +185,7 @@
                 hover:bg-violet-300
                 border-[1px] border-violet-600
                 text-violet-600 hover:text-violet-800
-                font-bold py-2 px-3 rounded
+                font-bold px-2 py-1 rounded
                 
                 popup-abort">
                 Tidak
@@ -200,12 +200,12 @@
         <form action="borrowings.add.php" method="POST" class="block">
             <div class="flex flex-col mb-4">
                 <label for="title" class="mb-2">Judul</label>
-                <input type="text" name="title" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
+                <input type="text" name="title" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
             </div>
 
             <div class="flex flex-col mb-4">
                 <label for="category" class="mb-2">Kategori</label>
-                <select name="category" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem] bg-white" id="category" required="required" placeholder="Input category">
+                <select name="category" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem] bg-white" id="category" required="required" placeholder="Input category">
                     <?php
                     $categories = $conn->prepare("SELECT * from kategori;");
                     $categories->execute();
@@ -219,18 +219,18 @@
 
             <div class="flex flex-col mb-4">
                 <label for="return_date" class="mb-2">Tahun Terbit</label>
-                <input type="nnmber" name="return_date" max=<?= date("Y"); ?> class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input published return_date">
+                <input type="nnmber" name="return_date" max=<?= date("Y"); ?> class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input published return_date">
             </div>
 
             <div class="flex flex-col mb-4">
                 <label for="publisher" class="mb-2">Penerbit</label>
-                <input type="text" name="publisher" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="publisher" required="required" placeholder="Input publisher">
+                <input type="text" name="publisher" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="publisher" required="required" placeholder="Input publisher">
             </div>
 
             <div class="flex flex-row gap-2 justify-end mt-4">
                 <button class="bg-violet-600
                     hover:bg-violet-800
-                    text-white font-bold py-2 px-3 rounded" type="submit" name="add_book">
+                    text-white font-bold px-2 py-1 rounded" type="submit" name="add_book">
                     Simpan
                 </button>
 
@@ -238,7 +238,7 @@
                     hover:bg-violet-300
                     border-[1px] border-violet-600
                     text-violet-600 hover:text-violet-800
-                    font-bold py-2 px-3 rounded
+                    font-bold px-2 py-1 rounded
                     popup-abort">
                     Batal
                 </button>
@@ -254,12 +254,12 @@
         <form action="borrowings.update.php" method="POST" class="block">
             <div class="flex flex-col mb-4">
                 <label for="title" class="mb-2">Judul</label>
-                <input type="text" name="title" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
+                <input type="text" name="title" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="title" required="required" placeholder="Input title">
             </div>
 
             <div class="flex flex-col mb-4">
                 <label for="category" class="mb-2">Kategori</label>
-                <select name="category" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem] bg-white" id="category" required="required" placeholder="Input category">
+                <select name="category" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem] bg-white" id="category" required="required" placeholder="Input category">
                     <?php
                     $categories = $conn->prepare("SELECT * from kategori;");
                     $categories->execute();
@@ -273,18 +273,18 @@
 
             <div class="flex flex-col mb-4">
                 <label for="return_date" class="mb-2">Tahun Terbit</label>
-                <input type="nnmber" name="return_date" max=<?= date("Y"); ?> class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input published return_date">
+                <input type="nnmber" name="return_date" max=<?= date("Y"); ?> class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="return_date" required="required" placeholder="Input published return_date">
             </div>
 
             <div class="flex flex-col mb-4">
                 <label for="publisher" class="mb-2">Penerbit</label>
-                <input type="text" name="publisher" class="border-[1px] p-2 rounded-md shadow-lg border-violet-600 w-[28rem]" id="publisher" required="required" placeholder="Input publisher">
+                <input type="text" name="publisher" class="border-[1px] px-2 py-1 rounded-md shadow-lg border-violet-600 w-[28rem]" id="publisher" required="required" placeholder="Input publisher">
             </div>
 
             <div class="flex flex-row gap-2 justify-end mt-4">
                 <button class="bg-violet-600
                     hover:bg-violet-800
-                    text-white font-bold py-2 px-3 rounded" type="submit" name="update_book">
+                    text-white font-bold px-2 py-1 rounded" type="submit" name="update_book">
                     Simpan
                 </button>
 
@@ -292,7 +292,7 @@
                     hover:bg-violet-300
                     border-[1px] border-violet-600
                     text-violet-600 hover:text-violet-800
-                    font-bold py-2 px-3 rounded
+                    font-bold px-2 py-1 rounded
                     popup-abort">
                     Batal
                 </button>
