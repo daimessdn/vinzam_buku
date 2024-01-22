@@ -42,6 +42,10 @@ if ($conn == true) {
     $createAnggotaTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `anggota` (`id` INT NOT NULL AUTO_INCREMENT , `nama` VARCHAR(100) NOT NULL , `nomor_anggota` VARCHAR(20) NOT NULL, PRIMARY KEY (`id`));");
     $createAnggotaTable->execute();
 
+    // buat table peminjaman
+    $createPeminjamanTable = $conn->prepare("CREATE TABLE IF NOT EXISTS `peminjaman` (`id` INT NOT NULL AUTO_INCREMENT , `buku_id` INT NOT NULL , `anggota_id` INT NOT NULL , `tanggal_peminjaman` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , `tanggal_pengembalian` DATE NOT NULL , `status` ENUM('Dalam Peminjaman','Sudah Mengembalikan') NOT NULL DEFAULT 'Dalam Peminjaman' , PRIMARY KEY (`id`));");
+    $createPeminjamanTable->execute();
+
     // echo "connection db success";
 } else {                        // if connection failed
     // echo "there is error";
