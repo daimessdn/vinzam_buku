@@ -30,7 +30,7 @@ if ($conn == true) {
     $checkKategoriExists->execute();
 
     if ($checkKategoriExists->rowCount() <= 0) {
-        $tambahKategori = $conn->prepare("INSERT INTO kategori (kategori) values ('Belum ada kategori'), ('Non-fiksi'), ('Novel'), ('Tips'), ('Cerita');");
+        $tambahKategori = $conn->prepare("INSERT INTO kategori (kategori) VALUES ('Belum ada kategori'), ('Non-fiksi'), ('Novel'), ('Tips'), ('Cerita');");
         $tambahKategori->execute();
     }
 
