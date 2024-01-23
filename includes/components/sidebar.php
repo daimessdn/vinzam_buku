@@ -9,6 +9,7 @@
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="dashboard.php">
+                <i class="fa-solid fa-house text-xl me-2"></i>
                 Dashboard
             </a>
         </li>
@@ -23,6 +24,7 @@
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="books.php">
+                <i class="fa-solid fa-book text-xl me-2"></i>
                 Books</a>
         </li>
 
@@ -36,6 +38,7 @@
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="members.php">
+                <i class="fa-solid fa-users text-xl me-2"></i>
                 Member
             </a>
         </li>
@@ -50,6 +53,7 @@
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="borrowings.php">
+                <i class="fa-solid fa-right-left text-xl me-2"></i>
                 Borrowings
             </a>
         </li>
@@ -64,6 +68,7 @@
                 rounded-md
                 text-violet-600
                 hover:text-violet-800" href="logout.php">
+                <i class="fa-solid fa-arrow-right-from-bracket text-xl me-2"></i>
                 Logout
             </a>
         </li>

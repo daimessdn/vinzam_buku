@@ -41,6 +41,10 @@
 
                 <h2 class="font-bold text-xl mt-4">Tahun Terbit</h2>
                 <p><?= $result["tahun_terbit"]; ?></p>
+
+                <p class="mt-4 px-2 py-1 bg-violet-500 text-white block w-fit rounded shadow-md">
+                    <?= $result["status_peminjaman"] ? "Sedang dipinjam" : "Buku ini tersedia"; ?>
+                </p>
             <?php endif; ?>
         </section>
     </div>
